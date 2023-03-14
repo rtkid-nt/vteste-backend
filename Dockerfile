@@ -1,7 +1,7 @@
 FROM node:19-alpine AS builder
 WORKDIR /app
 COPY . .
-RUN npm run build
+RUN npm install && npm run build
 
 FROM node:19-alpine
 WORKDIR /app

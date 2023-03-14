@@ -8,13 +8,11 @@ async function bootstrap() {
   const config = app.get(ConfigService);
   const port = config.get<number>('API_PORT');
 
-  console.log('PORT: !!!!!!!!!!!!!! !', port);
-
   const swaggerConfig = new DocumentBuilder()
     .setTitle('VTeste')
     .setDescription('The VTeste API description')
     .setVersion('1.0')
-    .addTag('VTeste')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
