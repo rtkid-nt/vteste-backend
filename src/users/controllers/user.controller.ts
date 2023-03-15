@@ -9,7 +9,6 @@ import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
 import { UserResponse } from '../responses/user.response';
 import { UserService } from '../services/user.service';
-import { AppError } from 'src/utils/errors';
 
 @ApiBearerAuth()
 @ApiTags('users')
