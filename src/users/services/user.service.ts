@@ -34,7 +34,8 @@ export class UserService {
       where: { email },
       relations: ['tests', 'testResults'],
     });
-    user.tests = user.tests.filter((t) => t.isStarted !== true);
+    if (user?.tests)
+      user.tests = user.tests.filter((t) => t.isStarted !== true);
 
     return user;
   }
