@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { TestsModule } from './tests/tests.module';
+import { TestResultsModule } from './test-results/test-results.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { TestsModule } from './tests/tests.module';
     UsersModule,
     AuthModule,
     TestsModule,
+    TestResultsModule,
   ],
   controllers: [],
   providers: [],

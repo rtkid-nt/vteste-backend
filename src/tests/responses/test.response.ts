@@ -61,4 +61,7 @@ export class TestResponse {
 
   @ApiProperty()
   correctAnswersCountMark_3: number;
+
+  @ApiProperty()
+  isStarted: boolean;
 }

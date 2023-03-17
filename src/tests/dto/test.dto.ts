@@ -29,7 +29,7 @@ export class TestDTO {
   @ApiProperty()
   description: string;
 
-  @ApiProperty()
+  @ApiProperty({ example: '5' })
   time: string;
 
   @ApiProperty({
@@ -61,4 +61,7 @@ export class TestDTO {
 
   @ApiProperty()
   correctAnswersCountMark_3: number;
+
+  @ApiProperty({ example: false })
+  isStarted: boolean;
 }

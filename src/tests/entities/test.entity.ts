@@ -32,6 +32,9 @@ export class TestEntity extends BaseEntity {
   @Column()
   correctAnswersCountMark_3: number;
 
+  @Column({ default: false })
+  isStarted: boolean;
+
   @ManyToOne(() => UserEntity, (user) => user.tests)
   user: UserEntity;
 }
