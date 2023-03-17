@@ -20,6 +20,14 @@ export class TestService {
     return test;
   }
 
+  async remove(id: string): Promise<void> {
+    await this.testsRepository.delete(id);
+  }
+
+  async update(testDTO: TestDTO): Promise<void> {
+    await this.testsRepository.update(testDTO.id, testDTO);
+  }
+
   async findAll(): Promise<TestEntity[]> {
     return await this.testsRepository.find();
   }

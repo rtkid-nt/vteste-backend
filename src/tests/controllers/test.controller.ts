@@ -1,8 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
+  Patch,
   Post,
   Req,
   UseGuards,
@@ -24,6 +26,20 @@ export class TestController {
   @Post()
   async create(@Body() testDTO: TestDTO, @Req() req): Promise<TestResponse> {
     return await this.testService.create(req.user.id, testDTO);
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtGuard)
+  @Delete(':id')
+  async remove(@Param('id') id: string): Promise<void> {
+    await this.testService.remove(id);
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtGuard)
+  @Patch()
+  async update(@Body() testDTO: TestDTO): Promise<void> {
+    await this.testService.update(testDTO);
   }
 
   @ApiOkResponse({ type: TestResponse, isArray: true })
