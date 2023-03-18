@@ -20,6 +20,8 @@ export class UserService {
 
   async create(dto: CreateUserDTO): Promise<UserEntity> {
     dto.password = await this.hashPassword(dto.password);
+    console.log(dto);
+
     return await this.usersRepository.save(dto);
   }
 

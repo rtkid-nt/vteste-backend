@@ -5,7 +5,7 @@ import { TestResultEntity } from 'src/test-results/entities/test-result.entity';
 
 @Entity('users')
 export class UserEntity extends BaseEntity {
-  @Column({ unique: true })
+  @Column({ name: 'email', unique: true })
   email: string;
 
   @Column()
