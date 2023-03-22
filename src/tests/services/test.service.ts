@@ -68,11 +68,10 @@ export class TestService {
 
     setTimeout(() => {
       this.testResultService.markEnded(testResult.id);
-    }, Number(test.time) * 60 * 10000);
+    }, Number(test.time) * 60 * 1000);
   }
 
   async registerStudent(code: string, name: string): Promise<void> {
-    const test = await this.findByCode(code);
     this.testResultService.registerStudent(code, name);
   }
 
