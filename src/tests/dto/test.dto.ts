@@ -32,6 +32,9 @@ export class TestDTO {
   @ApiProperty({ example: '5' })
   time: string;
 
+  @ApiProperty({ example: '2' })
+  day: string;
+
   @ApiProperty({
     isArray: true,
     example: [

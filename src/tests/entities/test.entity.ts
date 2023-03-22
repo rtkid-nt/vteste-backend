@@ -13,6 +13,9 @@ export class TestEntity extends BaseEntity {
   @Column()
   time: string;
 
+  @Column()
+  day: string;
+
   @Column('simple-json')
   questions: Array<{
     name: string;

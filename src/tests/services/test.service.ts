@@ -67,8 +67,11 @@ export class TestService {
     );
 
     setTimeout(() => {
+      test.isStarted = false;
+      this.testsRepository.save(test);
+
       this.testResultService.markEnded(testResult.id);
-    }, Number(test.time) * 60 * 1000);
+    }, Number(test.day) * 1000 * 60 * 60 * 24);
   }
 
   async registerStudent(code: string, name: string): Promise<void> {
