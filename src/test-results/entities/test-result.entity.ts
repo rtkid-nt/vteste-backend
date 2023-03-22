@@ -5,7 +5,7 @@ import { UserEntity } from 'src/users/entities/user.entity';
 @Entity('test-results')
 export class TestResultEntity extends BaseEntity {
   @Column()
-  testId: string;
+  testCode: string;
 
   @Column()
   testName: string;

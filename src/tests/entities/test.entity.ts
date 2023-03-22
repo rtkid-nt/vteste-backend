@@ -35,6 +35,9 @@ export class TestEntity extends BaseEntity {
   @Column({ default: false })
   isStarted: boolean;
 
+  @Column()
+  code: string;
+
   @ManyToOne(() => UserEntity, (user) => user.tests)
   user: UserEntity;
 }

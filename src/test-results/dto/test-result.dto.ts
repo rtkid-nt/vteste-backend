@@ -9,7 +9,7 @@ class Student {
 
 export class TestResultDTO {
   @ApiProperty()
-  testId: string;
+  testCode: string;
 
   @ApiProperty()
   testName: string;

@@ -23,9 +23,9 @@ export class TestResultService {
     return testResult;
   }
 
-  async registerStudent(testId: string, name: string): Promise<void> {
+  async registerStudent(testCode: string, name: string): Promise<void> {
     const testResult = await this.testResultsRepository.findOne({
-      where: { testId: testId },
+      where: { testCode: testCode },
     });
 
     testResult.students.push({ name: name, answers: [] });
@@ -34,12 +34,12 @@ export class TestResultService {
   }
 
   async putAnswer(
-    testId: string,
+    testCode: string,
     answerDTO: PutAnswerDTO,
     isValid: boolean,
   ): Promise<void> {
     const testResult = await this.testResultsRepository.findOne({
-      where: { testId: testId },
+      where: { testCode: testCode },
     });
 
     testResult.students

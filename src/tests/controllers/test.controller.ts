@@ -60,24 +60,24 @@ export class TestController {
   }
 
   @ApiOkResponse({ type: TestResponse })
-  @Get(':id')
-  async findById(@Param('id') id: string): Promise<TestResponse> {
-    return await this.testService.findById(id);
+  @Get(':code')
+  async findByCode(@Param('code') code: string): Promise<TestResponse> {
+    return await this.testService.findByCode(code);
   }
 
-  @Post(':id/register')
+  @Post(':code/register')
   async registerStudent(
-    @Param('id') id: string,
+    @Param('code') code: string,
     @Body() studentDTO: StudentDTO,
   ): Promise<void> {
-    await this.testService.registerStudent(id, studentDTO.name);
+    await this.testService.registerStudent(code, studentDTO.name);
   }
 
-  @Post(':id/answer')
+  @Post(':code/answer')
   async putAnswer(
-    @Param('id') id: string,
+    @Param('code') code: string,
     @Body() answerDTO: PutAnswerDTO,
   ): Promise<void> {
-    await this.testService.putAnswer(id, answerDTO);
+    await this.testService.putAnswer(code, answerDTO);
   }
 }

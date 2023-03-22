@@ -37,9 +37,9 @@ export class TestService {
     return await this.testsRepository.find({ where: { isStarted: false } });
   }
 
-  async findById(id: string): Promise<TestEntity> {
+  async findByCode(code: string): Promise<TestEntity> {
     const test = await this.testsRepository.findOne({
-      where: { id },
+      where: { code },
     });
 
     if (!test.isStarted)
@@ -56,7 +56,7 @@ export class TestService {
     await this.testsRepository.save(test);
 
     const testResultDTO: TestResultDTO = {
-      testId: id,
+      testCode: test.code,
       testName: test.name,
       countQuestions: test.questions.length,
       students: [],
@@ -67,21 +67,20 @@ export class TestService {
     );
 
     setTimeout(() => {
-      this.testsRepository.delete(id);
       this.testResultService.markEnded(testResult.id);
     }, Number(test.time) * 60 * 10000);
   }
 
-  async registerStudent(id: string, name: string): Promise<void> {
-    const test = await this.findById(id);
-    this.testResultService.registerStudent(id, name);
+  async registerStudent(code: string, name: string): Promise<void> {
+    const test = await this.findByCode(code);
+    this.testResultService.registerStudent(code, name);
   }
 
-  async putAnswer(id: string, answerDTO: PutAnswerDTO): Promise<void> {
-    const test = await this.findById(id);
+  async putAnswer(code: string, answerDTO: PutAnswerDTO): Promise<void> {
+    const test = await this.findByCode(code);
     const isValid =
       test.questions[answerDTO.questionIndex].answers[answerDTO.answerIndex]
         .isValid;
-    this.testResultService.putAnswer(id, answerDTO, isValid);
+    this.testResultService.putAnswer(code, answerDTO, isValid);
   }
 }
